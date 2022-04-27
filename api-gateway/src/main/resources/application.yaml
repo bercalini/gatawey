@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: bercalini-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: candidato-service
+          uri: lb://BERCALINI-CANDIDATO-SERVICE
+          predicates:
+            - Path=/candidato/**
+        - id: vaga-service
+          uri: lb://BERCALINI-VAGA-SERVICE
+          predicates:
+            - Path=/vaga/**
